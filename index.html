@@ -17,7 +17,7 @@
     </label>
 
     <label>Color:
-      <input type="color" name="base" value="#4286f4">
+      <input type="color" name="color" value="#4286f4">
     </label>
   </div>
 
@@ -37,8 +37,8 @@
       filter: blur(var(--blur));
     }
 
-    h1 {
-        color: var(--color)
+    .hl {
+      color: var(--color)
     }
     
     body {
@@ -65,7 +65,8 @@
     inputs.forEach( input => input.addEventListener('mousemove',handleChange))
     
     function handleChange() {
-      console.log(this.value)
+      const unit = this.dataset.unit || '';
+      document.documentElement.style.setProperty(`--${this.name}`, this.value+unit)
     }
   </script>
 
