@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Variables in JS</title>
+</head>
+<body>
+  <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
+
+  <div class="controls">
+    <label>Spacing:
+      <input type="range" name="spacing" min="10" max="200" value="10" data-unit="px">
+    </label>
+
+    <label>Blur:
+      <input type="range" name="blur" min="0" max="25" value="10" data-unit="px">
+    </label>
+
+    <label>Color:
+      <input type="color" name="base" value="#4286f4">
+    </label>
+  </div>
+
+  <img src="https://freight.cargocollective.com/t/original/i/1f84aaf9cec7d8e54c6d81daa490400369bee3c263973f176bb9db87a717c319/wall.jpg" height="420">
+
+  <style>
+  
+    :root {
+      --color: yellow;
+      --spacing: 10px;
+      --blur: 10px;
+    }
+    
+    img {
+      padding: var(--spacing);
+      background: var(--color);
+      filter: blur(var(--blur));
+    }
+
+    h1 {
+        color: var(--color)
+    }
+    
+    body {
+      text-align: center;
+      background: #16326B;
+      color: white;
+      font-family: 'monospace', sans-serif;
+      font-weight: 100;
+      font-size: 28px;
+    }
+
+    .controls {
+      margin-bottom: 50px;
+    }
+
+    input {
+      width:100px;
+    }
+  </style>
+
+  <script>
+    const inputs = document.querySelectorAll('.controls input')
+    inputs.forEach( input => input.addEventListener('change',handleChange))
+    inputs.forEach( input => input.addEventListener('mousemove',handleChange))
+    
+    function handleChange() {
+      console.log(this.value)
+    }
+  </script>
+
+</body>
+</html>
